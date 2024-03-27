@@ -27,5 +27,9 @@ $(OBJDIR):
 $(dir $(EXECUTABLE)):
 	mkdir -p $(dir $(EXECUTABLE))
 
+clean:
+	rm -rf $(OBJDIR) $(EXECUTABLE)
+
+
 .PHONY: all clean
 
