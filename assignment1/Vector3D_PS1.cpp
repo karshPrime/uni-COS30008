@@ -7,7 +7,6 @@
 #include <string>
 #include <cmath>
 
-// toString()
 // return Vector3D( 1.0f, 2.0f, 3.0f ) as "[1,2,3]"
 // rounded to 4 decimal points
 std::string Vector3D::toString() const noexcept 

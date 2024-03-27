@@ -8,9 +8,9 @@
 
 using namespace std;
 
-#define P1
-#define P2
-//#define P3
+//#define P1
+//#define P2
+#define P3
 
 size_t gCount = 0;
 
@@ -113,7 +113,7 @@ int runP3( int argc, char* argv[] )
     cout << "Signed area: " << lPolygon.getSignedArea() << endl;
     
     Matrix3x3 lRotate = Matrix3x3::rotate( 90.0f );
-    
+
     Polygon lRotatedPolygon = lPolygon.transform( lRotate );
     
     cout << "Signed area of rotated polygon: " << lRotatedPolygon.getSignedArea() << endl;
