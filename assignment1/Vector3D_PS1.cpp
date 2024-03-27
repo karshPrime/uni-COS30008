@@ -1,5 +1,6 @@
 
-// COS30008
+// COS30008 Assignment 1
+// Utkarsh Ranjan - 102874485
 
 #include "Vector3D.h"
 
@@ -11,14 +12,16 @@
 // rounded to 4 decimal points
 std::string Vector3D::toString() const noexcept 
 {
-    std::stringstream result;
+    std::stringstream Result;
 
+    // using const for compile time optimisation 
+    // since these vars wouldn't be changing their values after assignment
     const float lX = std::roundf(x() * 10000.0f) / 10000.0f;
     const float lY = std::roundf(y() * 10000.0f) / 10000.0f;
     const float lW = std::roundf(w() * 10000.0f) / 10000.0f;
 
-    result << "[" << lX << "," << lY << "," << lW << "]";
+    Result << "[" << lX << "," << lY << "," << lW << "]";
 
-    return result.str();
+    return Result.str();
 }
 

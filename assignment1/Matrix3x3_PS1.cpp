@@ -1,5 +1,6 @@
 
-// COS30008
+// COS30008 Assignment 1 
+// Utkarsh Ranjan - 102874485
 
 #include "Matrix3x3.h"
 
@@ -35,7 +36,8 @@ float Matrix3x3::det() const noexcept
 }
 
 // calculate matrix transpose 
-Matrix3x3 Matrix3x3::transpose() const noexcept {
+Matrix3x3 Matrix3x3::transpose() const noexcept 
+{
     // define new matrix as columns of base as rows
     return Matrix3x3(
 	    Vector3D(column(0)), 
@@ -45,19 +47,21 @@ Matrix3x3 Matrix3x3::transpose() const noexcept {
 }
 
 // check if invertable
-bool Matrix3x3::hasInverse() const noexcept {
+bool Matrix3x3::hasInverse() const noexcept 
+{
     // can only have inverse when determinant is not 0
     return det() != 0;
 }
 
 // calculate matrix inverse 
-Matrix3x3 Matrix3x3::inverse() const noexcept {
-    Matrix3x3 result;
+Matrix3x3 Matrix3x3::inverse() const noexcept 
+{
+    Matrix3x3 Result;
 
     // return null matrix if inverse is not possible
     // otherwise return inverse matrix
     if (hasInverse()) {
-	result = Matrix3x3(
+	Result = Matrix3x3(
 	    Vector3D(
 		(row(1)[1]*row(2)[2] - row(1)[2]*row(2)[1]),
 		(row(0)[2]*row(2)[1] - row(0)[1]*row(2)[2]),
@@ -75,11 +79,12 @@ Matrix3x3 Matrix3x3::inverse() const noexcept {
 	// overload
     }
 
-    return result;
+    return Result;
 }
 
 // << operator overload  
-std::ostream& operator<<( std::ostream& aOStream, const Matrix3x3& aMatrix ) {
+std::ostream& operator<<( std::ostream& aOStream, const Matrix3x3& aMatrix ) 
+{
     // broken down statement into multiple lines as a convention of sticking to
     // character 80 column limit
     return aOStream << "["
