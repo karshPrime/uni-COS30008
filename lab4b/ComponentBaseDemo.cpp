@@ -51,7 +51,7 @@ double getCurrentAt( double aVoltage,
 	double aFrequency = 0.0 ) const noexcept;
 
 // Reads text string "56.0 kOhm" to set base value to 56000.0 (register)
-friend std::istream& operator>>( std::istream& aIStream, ComponentBase& aObject );
+std::istream& operator>>( std::istream& aIStream, ComponentBase& aObject );
 
 // Writes text string "56.0 kOhm" obtained from base value 56000.0 (register)
-friend std::ostream& operator<<( std::ostream& aOStream, const ComponentBase& aObject );
+std::ostream& operator<<( std::ostream& aOStream, const ComponentBase& aObject );
