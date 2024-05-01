@@ -20,19 +20,77 @@ private:
     size_t fSwapCount;
     
 public:
-    BaseSorter( T* aCollection = nullptr, size_t aSize = 0 );
-    virtual ~BaseSorter();
+    BaseSorter( T* aCollection = nullptr, size_t aSize = 0 ) :
+        fCollection(new T[aSize]),
+        fSize(aSize),
+        fSwapCount(0)
+    {
+        for ( size_t i = 0; i < fSize; i++ )
+        {
+            fCollection[i] = aCollection[i];
+        }
+    }
     
-    size_t size() const noexcept;
-    size_t getSwapCount() const noexcept;
+    virtual ~BaseSorter()
+    {
+        delete[] fCollection;
+    }
+    
+    size_t size() const noexcept
+    {
+        return fSize;
+    }
 
-    const T& operator[]( size_t aIndex ) const;
-    void swap( size_t aLeftIndex, size_t aRightIndex );
+    size_t getSwapCount() const noexcept
+    {
+        return fSwapCount;
+    }
+
+    const T& operator[]( size_t aIndex ) const
+    {
+        assert( aIndex < fSize );
+        
+        return fCollection[aIndex];
+    }
+        
+    void swap( size_t aLeftIndex, size_t aRightIndex )
+    {
+        assert( aLeftIndex < fSize && aRightIndex < fSize );
+        
+        std::swap( fCollection[aLeftIndex], fCollection[aRightIndex] );
+        
+        fSwapCount++;
+    }
 
     virtual void operator()( bool aPrintStage = true, Cmp<T> aIsOutOfOrder = std::greater{} ) noexcept
     {
         // intentionally empty
     }
     
-    void printStage( size_t aIndent = 0 ) const noexcept;
+    void printStage( size_t aIndent = 0 ) const noexcept
+    {
+        while ( aIndent-- )
+        {
+            std::cout << ' ';
+        }
+        
+        std::cout << "[";
+        
+        if ( fSize > 0 )
+        {
+            for ( size_t i = 0;; )
+            {
+                std::cout << fCollection[i++];
+                
+                if ( i == fSize )
+                {
+                    break;
+                }
+                
+                std::cout << ",";
+            }
+        }
+        
+        std::cout << "]" << std::endl;
+    }
 };
