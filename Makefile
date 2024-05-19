@@ -27,9 +27,13 @@ $(OBJDIR):
 $(dir $(EXECUTABLE)):
 	mkdir -p $(dir $(EXECUTABLE))
 
+run: all
+	@echo "Running the program..."
+	@./bin
+
 clean:
 	rm -rf $(OBJDIR) $(EXECUTABLE)
 
 
-.PHONY: all clean
+.PHONY: all clean run
 
